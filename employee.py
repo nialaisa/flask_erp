@@ -2,7 +2,7 @@ from peewee import *
 from flask import url_for
 
 try:
-    db = PostgresqlDatabase('payrollsystem', user='postgres', password='./', host='localhost')
+    db = PostgresqlDatabase('d4nss17661naok', user='eoanplhpoqddlc', password='3f8e9557d48a236077cc1d1faeab85c9f3ce42ea852abd8f0076b39fd4fa94b6', host='ec2-54-235-133-42.compute-1.amazonaws.com')
     print("succesful connection")
 
 except:
