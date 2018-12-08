@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+     <title>Table of Employee</title>
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</head>
+<body>
+<div class="text-center">
+     <a  href="/employee" class="btn btn-success">Add New Emplyee</a>
+</div>
+ <table class="table table-bordered">
+  <thead>
+    <tr>
+            <th>ID</th>
+          <th>Full Name</th>
+          <th>KRA PIN</th>
+          <th>Department</th>
+          <th>Position</th>
+          <th>Basic Salary</th>
+          <th>House Allowance</th>
+          <th>Action</th>
+            <th>Action</th>
+          <th>Action</th>
+           <th>Action</th>
+
+    </tr>
+  </thead>
+  <tbody>
+     {% for row in displayEmployees %}
+    <tr>
+         <td>{{row.id}}</td>
+         <td>{{row.full_name}}</td>
+         <td>{{row.kra_pin_number}}</td>
+         <td>{{row.department}}</td>
+         <td>{{row.position}}</td>
+         <td>{{row.basic_salary}}</td>
+         <td>{{row.house_allowance}}</td>
+        <td>
+
+            <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal{{row.id}}">Edit</button>
+
+            <!-- Modal -->
+<div class="modal fade" id="modal{{row.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit {{row.full_name}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <form action="/updateEmployee/{{row.id}}" method="POST">
+  <div class="form-group">
+    <label>Full Name</label>
+    <input type="text" name="form_full_name" class="form-control" value="{{full_name}}" placeholder="Full Name">
+  </div>
+
+  <div class="form-group">
+    <label>KRA PIN</label>
+    <input type="text" name="form_kra_pin_number" class="form-control" value="{{kra_pin_number}}" placeholder="KRA PIN">
+  </div>
+
+  <div class="form-group">
+    <label>Department</label>
+    <input name="Department" class="form-control" value="{{Department}}" placeholder="Department">
+  </div>
+
+  <div class="form-group">
+    <label>Position</label>
+    <input name="Position" class="form-control" value="{{Position}}" placeholder="Position">
+  </div>
+
+   <div class="form-group">
+    <label>Basic Salary</label>
+    <input name="Basic Salary" class="form-control" value="{{Basic_Salary}}" placeholder="Basic_Salary">
+  </div>
+
+   <div class="form-group">
+    <label>House Allowance </label>
+    <input name="House Allowance" class="form-control" value="{{House_Allowance}}" placeholder="House Allowance">
+  </div>
+
+  <button type="submit" class="btn btn-primary">Add Employee</button>
+
+</form>
+
+      <div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+      <td>
+       <a href="/deleteEmployee/{{row.id}}" class="btn btn-danger" >Delete</a>
+      </td>
+  </div>
+</div>
+        <td>
+       <a href="/payroll/{{row.id}}" class="btn btn-danger" >Manage Payroll</a>
+        </td>
+         <td>
+       <a href="/cheque/{{row.id}}" class="btn btn-danger" >Manage cheque</a>
+        </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>
